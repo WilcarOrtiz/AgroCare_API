@@ -2,23 +2,14 @@
 AgroCare API
 """
 from fastapi import FastAPI
+from src.config.database import Base, engine
+from src.routes.user_routes import user_router
+
+
 app = FastAPI()
 app.title = "AgroCare API"
 
 
-@app.get('/', tags=['User'])
-def create_user():
-    """
-    Bienvenida
-    """
-    print("HOLA")
-    return ""
+Base.metadata.create_all(bind=engine)
 
-
-@app.delete('/{id}', tags=['User'])
-def delete_user():
-    """
-    Bienvenida
-    """
-    print("HOLA")
-    return ""
+app.include_router(prefix='/user', router=user_router, tags=['user'])
