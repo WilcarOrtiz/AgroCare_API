@@ -1,5 +1,7 @@
+# Ignorar la carpeta donde Docker guarda los datos de Postgres
+postgres_data/
+
+
 venv/
 __pycache__/
 *.pyc
-postgres_data/
-/postgres_data
