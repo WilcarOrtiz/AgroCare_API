@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14.3
+    container_name: agrocare_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}   # Usuario
+      POSTGRES_PASSWORD: ${DB_PASSWORD}  # Contraseña
+      POSTGRES_DB: ${DB_NAME}  # Nombre de la base
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
