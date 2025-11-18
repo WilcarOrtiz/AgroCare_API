@@ -30,3 +30,13 @@ class UserRepository:
         self.db.commit()
         self.db.refresh(usuario_db)
         return usuario_db
+
+    def login(self, email: str) -> UserSchema | None:
+        """
+        Buscar usuario por email. Retorna el usuario si coincide, sino None.
+        """
+        usuario_db = self.db.query(UserSchema).filter(
+            UserSchema.email == email).first()
+        if usuario_db:
+            return usuario_db
+        return None

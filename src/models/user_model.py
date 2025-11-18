@@ -4,7 +4,7 @@ Modelos USUARIO
 """
 from enum import Enum
 import re
-from pydantic import BaseModel, Field, EmailStr, field_validator
+from pydantic import BaseModel, Field, EmailStr, constr, field_validator
 
 
 class RolesEnum(str, Enum):
@@ -33,7 +33,7 @@ class CreateUsuario(BaseModel):
     identificacion: str = Field(min_length=5, max_length=11)
     username: str = Field(min_length=5)
     email: EmailStr
-    password: str
+    password: constr(min_length=8, max_length=72)
     role: RolesEnum
 
     @field_validator("username")

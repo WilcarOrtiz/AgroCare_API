@@ -1,4 +1,6 @@
 # Ignorar la carpeta donde Docker guarda los datos de Postgres
+
+
 postgres_data/
 
 
